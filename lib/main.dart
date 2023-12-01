@@ -18,7 +18,9 @@ class _MyAppState extends State<MyApp> {
   double bluevalue = 0;
   double sizeText = 10;
   int red = 100;
-
+  bool tach = false;
+  bool bold = false;
+  List<TextDecoration> tachtexto = [];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,8 +42,12 @@ class _MyAppState extends State<MyApp> {
                       color: Color.fromRGBO(redvalue.toInt(),
                           greenvalue.toInt(), bluevalue.toInt(), 1),
                       fontSize: sizeText.toDouble(),
-                      //redvalue.toStringAsFixed(100)),
+                      fontWeight: bold ? FontWeight.bold : FontWeight.normal,
+                      decoration: TextDecoration.combine(
+                        tachtexto,
+                      ),
                     ),
+                    //redvalue.toStringAsFixed(100)),
                   ),
                   Slider(
                       value: redvalue,
@@ -75,6 +81,25 @@ class _MyAppState extends State<MyApp> {
                         sizeText = valor4;
                         setState(() {});
                       }),
+                  CheckboxListTile(
+                    value: tach,
+                    title: Text("Tachar"),
+                    onChanged: (valor5) {
+                      tach = valor5!;
+
+                      tachtexto.add(TextDecoration.lineThrough);
+                      setState(() {});
+                    },
+                  ),
+                  CheckboxListTile(
+                    value: tach,
+                    title: Text("Negrita"),
+                    onChanged: (valor5) {
+                      bold = valor5!;
+
+                      setState(() {});
+                    },
+                  ),
                 ],
               ),
             ),
