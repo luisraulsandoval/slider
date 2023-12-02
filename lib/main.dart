@@ -43,9 +43,7 @@ class _MyAppState extends State<MyApp> {
                           greenvalue.toInt(), bluevalue.toInt(), 1),
                       fontSize: sizeText.toDouble(),
                       fontWeight: bold ? FontWeight.bold : FontWeight.normal,
-                      decoration: TextDecoration.combine(
-                        tachtexto,
-                      ),
+                      decoration: TextDecoration.combine(tachtexto),
                     ),
                     //redvalue.toStringAsFixed(100)),
                   ),
@@ -82,20 +80,20 @@ class _MyAppState extends State<MyApp> {
                         setState(() {});
                       }),
                   CheckboxListTile(
-                    value: tach,
-                    title: Text("Tachar"),
-                    onChanged: (valor5) {
-                      tach = valor5!;
+                    value: bold,
+                    title: Text("Negrita"),
+                    onChanged: (valor6) {
+                      bold = valor6!;
 
-                      tachtexto.add(TextDecoration.lineThrough);
                       setState(() {});
                     },
                   ),
                   CheckboxListTile(
                     value: tach,
-                    title: Text("Negrita"),
+                    title: Text("Tachar"),
                     onChanged: (valor5) {
-                      bold = valor5!;
+                      tachtexto.add(TextDecoration.lineThrough);
+                      tach = valor5!;
 
                       setState(() {});
                     },
